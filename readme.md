@@ -1,4 +1,3 @@
-
 # SIH 2024 - Tilchattaas: Eldicare - AI-Enabled Fall Prevention System for Elderly
 
 ### Smart India Hackathon 2024
@@ -28,27 +27,27 @@ flowchart TD
     Start[Wearable Device Startup]:::start
     Start --> Init[Initialize Sensors]:::process
     Init --> Check{Sensor Status Check}:::decision
-    Check -- "Healthy" --> Monitor[Monitor User's Vital Signs]:::monitor
+    Check -- "Normal" --> Monitor[Monitor User's Vital Signs]:::monitor
     Check -- "Abnormal" --> Alert[Trigger Alert System]:::alert
-    
+
     Monitor --> Movement{Movement Detected?}:::decision
     Movement -- "Yes" --> Analyze[Analyze Movement Pattern]:::process
     Movement -- "No" --> Monitor
-    
+
     Analyze -- "Fall Detected" --> Alert
     Analyze -- "Normal Movement" --> Monitor
-    
+
     Alert --> SendAlert[Send Alert to Caregiver]:::alert
     SendAlert --> Location[Share Real-Time Data]:::output
-    
+
     Alert --> UserResponse{User Response?}:::decision
     UserResponse -- "Emergency Button Pressed" --> SendAlert
     UserResponse -- "No Response" --> Escalate[Escalate to Emergency Services]:::alert
 
     Escalate --> Notify[Notify Family/Care Facility]:::output
-    Monitor --> Loop[Continue Monitoring]:::monitor
+    Monitor -- "Healthy" --> Loop[Continue Monitoring]:::monitor
     Loop --> Check
-    
+
     %% Color classes suitable for both themes
     classDef start fill:#2E86C1,color:#FFFFFF,stroke:#333,stroke-width:2px;  %% Dark blue for start
     classDef process fill:#58D68D,color:#000000,stroke:#333,stroke-width:1px; %% Green for processes
@@ -60,7 +59,7 @@ flowchart TD
 
 ## Technical Approach
 
-- **Gyroscope & Accelerometer**: Measures body orientation (X, Y, Z axes) and detects rapid movements or instability.
+- **Gyroscope & Accelerometer**: Measures body orientation (X, Y, Z axis) and detects rapid movements or instability.
 - **Auto-Reboot**: Prevents false readings by resetting the device periodically.
 - **GSM Module**: Ensures connectivity and emergency alerts, even without a smartphone.
 
@@ -96,4 +95,4 @@ The Android app complements the wearable device by displaying real-time data, pr
 - Relevant Research:
   - [HealthResearch on Fall Risks](https://journals.lww.com/jtrauma/abstract/2006/02000/a_simple_fall_in_the_elderly__not_so_simple.3.aspx)
   - [NIH Study on Fall Prevention](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9213836/)
-  - Google Books: *Promoting Health and Wellness in the Geriatric Patient* by David A Soto
+  - Google Books: _Promoting Health and Wellness in the Geriatric Patient_ by David A Soto
