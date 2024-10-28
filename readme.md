@@ -1,5 +1,4 @@
 
-
 # SIH 2024 - Tilchattaas: Eldicare - AI-Enabled Fall Prevention System for Elderly
 
 ### Smart India Hackathon 2024
@@ -22,6 +21,43 @@ Eldicare is a wearable, AI-powered system designed to prevent falls among the el
 - **Emergency Button**: Allows the user to send an alert manually if needed.
 - **Smart Home Integration**: Connects with emergency alarms and smart home systems.
 
+## Flowchart of Working
+
+```mermaid
+flowchart TD
+    Start[Wearable Device Startup]:::start
+    Start --> Init[Initialize Sensors]:::process
+    Init --> Check{Sensor Status Check}:::decision
+    Check -- "Healthy" --> Monitor[Monitor User's Vital Signs]:::monitor
+    Check -- "Abnormal" --> Alert[Trigger Alert System]:::alert
+    
+    Monitor --> Movement{Movement Detected?}:::decision
+    Movement -- "Yes" --> Analyze[Analyze Movement Pattern]:::process
+    Movement -- "No" --> Monitor
+    
+    Analyze -- "Fall Detected" --> Alert
+    Analyze -- "Normal Movement" --> Monitor
+    
+    Alert --> SendAlert[Send Alert to Caregiver]:::alert
+    SendAlert --> Location[Share Real-Time Data]:::output
+    
+    Alert --> UserResponse{User Response?}:::decision
+    UserResponse -- "Emergency Button Pressed" --> SendAlert
+    UserResponse -- "No Response" --> Escalate[Escalate to Emergency Services]:::alert
+
+    Escalate --> Notify[Notify Family/Care Facility]:::output
+    Monitor --> Loop[Continue Monitoring]:::monitor
+    Loop --> Check
+    
+    %% Color classes suitable for both themes
+    classDef start fill:#2E86C1,color:#FFFFFF,stroke:#333,stroke-width:2px;  %% Dark blue for start
+    classDef process fill:#58D68D,color:#000000,stroke:#333,stroke-width:1px; %% Green for processes
+    classDef decision fill:#F4D03F,color:#000000,stroke:#333,stroke-width:1px; %% Yellow for decisions
+    classDef monitor fill:#AF7AC5,color:#FFFFFF,stroke:#333,stroke-width:1px; %% Purple for monitoring
+    classDef alert fill:#E74C3C,color:#FFFFFF,stroke:#333,stroke-width:1px; %% Red for alerts
+    classDef output fill:#5DADE2,color:#000000,stroke:#333,stroke-width:1px; %% Light blue for outputs
+```
+
 ## Technical Approach
 
 - **Gyroscope & Accelerometer**: Measures body orientation (X, Y, Z axes) and detects rapid movements or instability.
@@ -33,6 +69,17 @@ Eldicare is a wearable, AI-powered system designed to prevent falls among the el
 - **Data Reliability**: Custom dataset development for accurate fall detection.
 - **False Readings**: Mitigated by periodic auto-reboots.
 - **Communication**: GSM integration ensures connectivity without requiring a smartphone.
+
+## Demo of Android App
+
+https://github.com/user-attachments/assets/2b0fa7b2-f813-4a12-aa6c-b92efee35c8e
+
+The Android app complements the wearable device by displaying real-time data, providing alerts to caregivers, and tracking the user's health status. Key app features include:
+
+- **Real-Time Monitoring**: Displays current vital signs and movement data.
+- **Alert Notifications**: Caregivers receive instant alerts in case of a fall or emergency.
+- **Emergency Contact Integration**: Allows quick access to emergency contacts.
+- **History Tracking**: Logs previous alerts and health data for review.
 
 ## Benefits and Impact
 
